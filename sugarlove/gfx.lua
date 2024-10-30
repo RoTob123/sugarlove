@@ -1,14 +1,14 @@
 sugar = sugar or {}
 sugar.gfx = sugar.gfx or {}
 
-require("sugarcoat/debug")
-require("sugarcoat/utility")
-require("sugarcoat/maths")
-require("sugarcoat/window")
-require("sugarcoat/text")
+require("sugarlove/debug")
+require("sugarlove/utility")
+require("sugarlove/maths")
+require("sugarlove/window")
+require("sugarlove/text")
 
-local _D = require("sugarcoat/gfx_vault")
-local events = require("sugarcoat/sugar_events")
+local _D = require("sugarlove/gfx_vault")
+local events = require("sugarlove/sugar_events")
 local _flr = math.floor
 
 
@@ -161,14 +161,9 @@ local function init_gfx(window_name, w, h, scale)
   love.graphics.setDefaultFilter("nearest","nearest",0)
   
   -- window size setting
-  local win_w, win_h
-  if castle then
-    win_w, win_h = love.graphics.getDimensions()
-  else
-    win_w = w * scale
-    win_h = h * scale
-    love.window.setMode(win_w, win_h, {resizable = true})
-  end
+  local win_w = w * scale
+  local win_h = h * scale
+  love.window.setMode(win_w, win_h, {resizable = true})
   
   love.window.setTitle(window_name or "~ Untitled ~")
   
@@ -202,7 +197,7 @@ local function init_gfx(window_name, w, h, scale)
   
   
   -- default font
-  sugar.gfx.load_font("sugarcoat/TeapotPro.ttf", 16, _D.default_font)
+  sugar.gfx.load_font("sugarlove/TeapotPro.ttf", 16, _D.default_font)
   sugar.gfx.use_font()
   sugar.gfx.printp()
   sugar.gfx.printp_color()

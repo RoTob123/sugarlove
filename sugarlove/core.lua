@@ -1,31 +1,23 @@
 sugar = sugar or {}
 
-require("sugarcoat/debug")
-require("sugarcoat/utility")
-require("sugarcoat/gfx")
-require("sugarcoat/input")
-require("sugarcoat/time")
-require("sugarcoat/audio")
-require("sugarcoat/maths")
+require("sugarlove/debug")
+require("sugarlove/utility")
+require("sugarlove/gfx")
+require("sugarlove/input")
+require("sugarlove/time")
+require("sugarlove/audio")
+require("sugarlove/maths")
 
 local S = sugar
 
 local function init_sugar(window_name, w, h, scale)
-  if castle then
-    S.debug.start_log(window_name.."_log.txt")
-  else
-    S.debug.start_log("log.txt")
-  end
+  S.debug.start_log("log.txt")
   
-  S.debug.log("Initializing SUGARcoat.")
+  S.debug.log("Initializing sugarlove.")
   
   local love_va, love_vb, love_vc = love.getVersion()
   S.debug.log("Using Love v"..love_va.."."..love_vb.."."..love_vc.." .")
-  
-  if castle then
-    S.debug.log("Running in Castle.")
-  end
-  
+
   if SUGAR_SERVER_MODE then
     S.debug.w_log("Running in server mode - no gfx, input or audio.")
     S.time.init_time()
@@ -70,9 +62,7 @@ local function shutdown_sugar()
   S.debug.log("All systems shut down.")
   S.debug.end_log()
   
-  if not castle then
-    love.event.push("quit")
-  end
+  love.event.push("quit")
 end
 
 

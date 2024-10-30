@@ -1,10 +1,10 @@
 sugar = sugar or {}
 sugar.gfx = sugar.gfx or {}
 
-require("sugarcoat/debug")
-require("sugarcoat/utility")
+require("sugarlove/debug")
+require("sugarlove/utility")
 
-local _D = require("sugarcoat/gfx_vault")
+local _D = require("sugarlove/gfx_vault")
 
 
 local function load_font(ttf_filepath, size, key, use_it)

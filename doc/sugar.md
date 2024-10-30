@@ -18,7 +18,7 @@
 &#8202;
 
 #### `sugar. init_sugar (window_name, w, h, scale)`
-- Initializes Sugarcoat for use.
+- Initializes sugarlove for use.
 - `w` and `h` are the width and height you want for your simulated screen resolution.
 - `scale` is the scale factor you want for stretching your simulated resolution. You can change the behavior around scaling with the various `sugar.gfx.screen_...` functions.
 
@@ -31,7 +31,7 @@
 &#8202;
 
 #### `sugar. shutdown_sugar ()`
-- Shuts down the various sugarcoat subsystems.
+- Shuts down the various sugarlove subsystems.
 - This function is automatically called on closing the application, unless you are using your own `love.run`.
 - Since Love2D has a garbage collector (contrarily to C++ SUGAR), this function doesn't actually need to be called at any time.
 
@@ -55,8 +55,8 @@
 &#8202;
 
 #### `sugar. S`
-- A table that contains the content of all the subpackages in sugarcoat.
-- You may call any sugarcoat function through `sugar.S.foo()`.
+- A table that contains the content of all the subpackages in sugarlove.
+- You may call any sugarlove function through `sugar.S.foo()`.
 
 &#8202;
 
@@ -105,6 +105,6 @@ The listed features in the following subpackage are not comprehensive, they're o
 
 #### [`sugar. utility`](/doc/utility.md#sugar-utility)
 - The utility subpackage of sugar.
-- This subpackage is unique to sugarcoat, it doesn't exist in the original Sugar.
+- This subpackage is unique to sugarlove, it doesn't exist in the original SUGAR.
 - Features functions to work with Lua tables.
 - Contains `using_package(p, override)`.

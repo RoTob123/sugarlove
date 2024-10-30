@@ -109,8 +109,8 @@
 
 #### `sugar.gfx. render_to_canvas ([canvas])`
 - If set, `canvas` has to be a love2D canvas, built with `love.graphics.newCanvas(...)`.
-- If `canvas` is set, Sugarcoat will draw the simulated screen to this love2D canvas instead of directly to the real screen.
-- This can be used in pair with the `sugar.after_render` callback to do post-processing on Sugarcoat's output.
+- If `canvas` is set, sugarlove will draw the simulated screen to this love2D canvas instead of directly to the real screen.
+- This can be used in pair with the `sugar.after_render` callback to do post-processing on sugarlove's output.
 
 &#8202;
 
@@ -424,7 +424,7 @@ Note that the spritesheet drawing functions will fail if no spritesheet surface 
 
 ---
 
-The default font in Sugarcoat is TeapotPro by [Eeve Somepx](https://twitter.com/somepx)! Support him!
+The default font in Sugarcoat and sugarlove is TeapotPro by [Eeve Somepx](https://twitter.com/somepx)! Support him!
 
 &#8202;
 

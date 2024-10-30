@@ -1,9 +1,6 @@
 sugar = sugar or {}
 
-if castle and not sugar.castle_print then
-  sugar.castle_print = print
-end
-local castle_print = sugar.castle_print
+local console_print = print
 
 
 local logfile
@@ -33,9 +30,7 @@ local function _log(prefix, str)
     log_foo(str)
   end
   
-  if castle then
-    castle_print(str)
-  end
+  console_print(str)
 end
 
 local function log(str, prefix)
@@ -62,7 +57,7 @@ local function w_log(str)
 end
 
 local function r_log(str)
-  _log("ERR", str)
+  _log("<X>", str)
 end
 
 local function assert(condition, str)
@@ -79,11 +74,11 @@ local function abort(str)
   end
   
 --  shutdown_sugar()
-  error(str or "Program was aborted through Sugarcoat.")
+  error(str or "Program was aborted through sugarlove.")
 end
 
 local function abort_brutal(str)
-  error(str or "Program was aborted through Sugarcoat.")
+  error(str or "Program was aborted through sugarlove.")
 end
 
 
@@ -111,7 +106,8 @@ sugar.debug = {
   abort_brutal    = abort_brutal,
   
   write_clipboard = write_clipboard,
-  read_clipboard  = read_clipboard
+  read_clipboard  = read_clipboard,
+  console_print = print
 }
 
 sugar.S = sugar.S or {}

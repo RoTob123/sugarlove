@@ -1,27 +1,7 @@
-if CASTLE_PREFETCH then
-  CASTLE_PREFETCH({
-    "sugarcoat/TeapotPro.ttf",
-    "sugarcoat/audio.lua",
-    "sugarcoat/core.lua",
-    "sugarcoat/debug.lua",
-    "sugarcoat/gfx.lua",
-    "sugarcoat/gfx_vault.lua",
-    "sugarcoat/input.lua",
-    "sugarcoat/maths.lua",
-    "sugarcoat/map.lua",
-    "sugarcoat/sprite.lua",
-    "sugarcoat/text.lua",
-    "sugarcoat/time.lua",
-    "sugarcoat/utility.lua",
-    "sugarcoat/window.lua",
-    "sugarcoat/sugarcoat.lua"
-  })
-end
-
 sugar = {}
 sugar.S = {}
 
-local events = require("sugarcoat/sugar_events")
+local events = require("sugarlove/sugar_events")
 
 local active_canvas, active_color
 local old_love = love
@@ -128,64 +108,20 @@ for k,v in pairs(old_love) do
   end
 end
 
-
-local _castle_prev_exist
-if castle then
-  local old_castle = castle
-  local set_castle = setmetatable({}, {__index = old_castle})
-  
-  castle = setmetatable({}, {
-    __index = set_castle,
-    __newindex = function(t, k, v)
-      if type(v) == "function" or v == nil then
-        if k == "backgroundupdate" then
-          old_castle[k] = arrange_call(v, sugar.sugar_step, nil)
-        else
-          old_castle[k] = arrange_call(v)
-        end
-        
-        set_castle[k] = v
-      else
-        old_castle[k] = v
-        set_castle[k] = v
-      end
-    end
-  })
-  
-  local _dont_arrange = {
-
-  }
-  _castle_prev_exist = {}
-  
-  for k,v in pairs(old_castle) do
-    if type(v) == "function" and not _dont_arrange[k] then
-      _castle_prev_exist[k] = v
-    end
-  end
-end
-
-require("sugarcoat/utility")
-require("sugarcoat/debug")
-require("sugarcoat/maths")
-require("sugarcoat/gfx")
-require("sugarcoat/sprite")
-require("sugarcoat/text")
-require("sugarcoat/time")
-require("sugarcoat/input")
-require("sugarcoat/audio")
-require("sugarcoat/core")
+require("sugarlove/utility")
+require("sugarlove/debug")
+require("sugarlove/maths")
+require("sugarlove/gfx")
+require("sugarlove/sprite")
+require("sugarlove/text")
+require("sugarlove/time")
+require("sugarlove/input")
+require("sugarlove/audio")
+require("sugarlove/core")
 
 
 for k,v in pairs(_prev_exist) do
   love[k] = v
-end
-
-if _castle_prev_exist then
-  castle.backgroundupdate = nil
-  
-  for k,v in pairs(_castle_prev_exist) do
-    castle[k] = v
-  end
 end
 
 local function quit()
@@ -194,19 +130,6 @@ end
 
 love.quit = quit
 events.quit = quit
-
-
-if castle and not SUGAR_SERVER_MODE then
-  local canvas
-  function network.paused()
-    canvas = love.graphics.getCanvas()
-    love.graphics.setCanvas()
-  end
-  
-  function network.resumed()
-    love.graphics.setCanvas(canvas)
-  end
-end
 
 
 if SUGAR_SERVER_MODE then

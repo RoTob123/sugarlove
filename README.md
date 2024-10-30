@@ -1,9 +1,9 @@
-# sugarcoat
-An interface to use the SUGAR API with Castle &amp; Love2D
+# sugarlove
+An interface to use the SUGAR API with Love2D
 
 [SUGAR](https://trasevol.dog/sugar/) is a retro-inspired, limitation-led C++ game engine!
 It features a minimalist API and a retro graphics infrastructure for making authentic low-resolution games.
-Sugarcoat is an attempt to reproduce most of SUGAR's behavior in [Castle](https://castle.games/) & [Love2D](https://love2d.org/).
+Sugarcoat is an attempt to reproduce most of SUGAR's behavior in [Love2D](https://love2d.org/).
 
 **[Go to the documentation hub!](/doc/sugar.md#sugar)**
 
@@ -13,18 +13,19 @@ Then do `require("sugarcoat/sugarcoat")` at the top of your `main.lua`.
 
  
 
-Next, I recommend that you do either of these lines: *(not both)*
+Next, do one of two:
 ```lua
+sugar.utils.using_package(sugar.S, true)
+```
+
+OR
+
+```lua
+sugar.utils.using_package(sugar, true)
 local S = sugar.S
 ```
-OR
-```lua
-sugar.utility.using_package(sugar.S, true)
-```
 
-`sugar.S` is intended to serve as a shortcut - it has the content of all the subpackages in sugar. So instead of calling `sugar.input.btn(0)`, you may write `sugar.S.btn(0)` or, after the `local S` line, `S.btn(0)`.
-
-`sugar.utility.using_package(package, override)` merges the given package into the global environment. In other words: the content of the package will now be global. By using it on `sugar.S`, you will be able to use all of sugarcoat's functions as global functions. So, with the previous example, you could simply use `btn(0)`.
+In both cases, instead of typing `sugar.<class>.foo()`, you can just do `S.foo()`!
 
  
 
@@ -72,193 +73,3 @@ end
 ```
 
 Check out **[chill_snake.lua](/chill_snake.lua)** for a much more complete example!
-
-Have fun!
-
----
-
-Here is an overview of all the available packages and their functions:
-_(Packages have links to more detailed documentation)_
-
-* [`sugar`](/doc/sugar.md#sugar)
-  - `init_sugar(window_name, w, h, scale)`
-  - `sugar_step()`
-  - `shutdown_sugar()`
-  - `sys_battery()`
-  - `after_render`
-  
-  - [`debug`](/doc/debug.md#sugar-debug)
-    - `start_log(file_name)`
-    - `end_log()`
-    - `catch_logs(foo)`
-    - `log(str, prefix)`
-    - `w_log(str)`
-    - `r_log(str)`
-    - `assert(condition, str)`
-    - `abort(str)`
-    - `abort_brutal(str)`
-    - `write_clipboard(str)`
-    - `read_clipboard()`
-  
-  - [`gfx`](/doc/gfx.md#sugar-gfx)
-    - `init_gfx(window_name, w, h, scale)`
-    - `shutdown_gfx()`
-    - `half_flip()`
-    - `flip()`
-    - `render_to_canvas()`
-    - `camera(x, y)`
-    - `camera_move(dx, dy)`
-    - `get_camera()`
-    - `clip(x, y, w, h)`
-    - `get_clip()`
-    - `color(i)`
-    - `pal(ca, cb, flip_level)`
-    - `palt(c, make_transparent)`
-    - `clear(c)`
-    - `cls(c)`
-    - `rectfill(xa, ya, xb, yb, c)`
-    - `rect(xa, ya, xb, yb, c)`
-    - `circfill(x, y, r, c)`
-    - `circ(x, y, r, c)`
-    - `trifill(xa, ya, xb, yb, xc, yc, c)`
-    - `tri(xa, ya, xb, yb, xc, yc, c)`
-    - `line(xa, ya, xb, yb, c)`
-    - `pset(x, y, c)`
-    - `pget(x, y)`
-    - `use_palette(plt)`
-    - `get_palette()`
-    - `palette_len()`
-    - `new_surface(w, h, key)`
-    - `load_png(key, file_name, palette, use_as_spritesheet)`
-    - `delete_surface(key)`
-    - `surface_size(key)`
-    - `surface_exists(key)`
-    - `surfshot(key, scale, file_name)`
-    - `target(surf_key)`
-    - `get_target()`
-    - `target_size()`
-    - `target_w()`
-    - `target_h()`
-    - `scan_surface(key)`
-    - `palettes` [a table]
-    - `spritesheet(surf_key)`
-    - `get_spritesheet()`
-    - `spritesheet_grid(w, h)`
-    - `get_spritesheet_grid()`
-    - `spr(s, x, y, w, h, flip_x, flip_y)`
-    - `aspr(s, x, y, a, w, h, anchor_x, anchor_y, scale_x, scale_y)`
-    - `sspr(sx, sy, sw, sh, dx, dy, dw, dh)`
-    - `spr_sheet(key, x, y)`
-    - `sget(x, y, key)`
-    - `load_font(ttf_filepath, size, key, use_it)`
-    - `delete_font(key)`
-    - `use_font(key)`
-    - `get_font()`
-    - `str_px_width(str, font)`
-    - `print(str, x, y, c)`
-    - `printp(a, b, c, d)`
-    - `printp_color(c1, c2, c3)`
-    - `pprint(str, x, y, c1, c2, c3)`
-    - `screen_size()`
-    - `screen_w()`
-    - `screen_h()`
-    - `screen_scale()`
-    - `screen_render_stretch(enable)`
-    - `screen_render_integer_scale(enable)`
-    - `screen_resizeable(enable, scale, on_resize_callback)`
-    - `screen_resize(w, h, resize_window)`
-    - `update_screen_size()`
-    - `screen_get_render_stretch()`
-    - `screen_get_render_integer_scale()`
-    - `screen_get_resizeable()`
-    - `set_background_color(c)`
-    - `window_size(w, h)`
-    - `screen_shader(shader_code)`
-    - `screen_shader_input(value_table)`
-    
-  - [`input`](/doc/input.md#sugar-input)
-    - `init_input()`
-    - `update_input()`
-    - `shutdown_input()`
-    - `exit_required()`
-    - `require_exit()`
-    - `new_player()`
-    - `input_type` [a table]
-    - `input_id(type, id)`
-    - `register_btn(btn_id, player, inputs)`
-    - `btn(id, player)`
-    - `btnp(id, player)`
-    - `btnr(id, player)`
-    - `btnv(id, player)`
-    - `ctrlr_list()`
-    - `ctrlr_count()`
-    - `player_assign_ctrlr(player, controller)`
-    - `ctrlr_has_default_bindings(controller)`
-    - `ctrlr_name(controller)`
-    
-  - [`maths`](/doc/maths.md#sugar-maths)
-    - `cos(a)`
-    - `sin(a)`
-    - `atan2(x, y)`
-    - `lerp(a, b, i)`
-    - `flr(a)`
-    - `ceil(a)`
-    - `round(a)`
-    - `sgn(a)`
-    - `sqr(a)`
-    - `cub(a)`
-    - `pow(a, b)`
-    - `sqrt(a)`
-    - `abs(a)`
-    - `min(a, b)`
-    - `max(a, b)`
-    - `mid(a, b, c)`
-    - `angle_diff(a1, a2)`
-    - `dist(x1, y1, x2, y2)`
-    - `sqrdist(x, y)`
-    - `srand(seed)`
-    - `raw_rnd()`
-    - `rnd(n)`
-    - `irnd(n)`
-    - `pick(tab)`
-    
-  - [`time`](/doc/time.md#sugar-time)
-    - `init_time()`
-    - `update_time()`
-    - `set_frame_waiting(fps)`
-    - `t()`
-    - `time()`
-    - `dt()`
-    - `delta_time()`
-    - `sleep(sec)`
-    - `freeze(sec)`
-    - `fps()`
-    - `fps_raw()`
-    - `frame_time()`
-    - `frame_time_raw()`
-    - `sys_ltime()`
-    - `sys_gtime()`
-    
-  - [`audio`](/doc/audio.md#sugar-audio)
-    - `init_audio(sfx_vol, music_vol)`
-    - `shutdown_audio()`
-    - `load_sfx(file, id, volume)`
-    - `load_music(file, id, volume)`
-    - `sfx_volume(v)`
-    - `music_volume(v)`
-    - `unload_sfx(id)`
-    - `unload_music(id)`
-    - `sfx(id, distance, stereo_angle, pitch)`
-    - `music(id, loop)`
-
-  - [`utility`](/doc/utility.md#sugar-utility)
-    - `using_package(p, do_override)`
-    - `all(ar)`
-    - `del(ar, val)`
-    - `del_at(ar, n)`
-    - `add(ar, v)`
-    - `sort(ar)`
-    - `merge_tables(dst, src)`
-    - `copy_table(tab, deep)`
-  
-  - `S` [contains everything]

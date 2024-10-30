@@ -78,3 +78,7 @@ If you are using Castle, the logs will also appear in the development console.
 #### `sugar.debug. read_clipboard ()`
 - Reads the system clipboard.
 - Returns the clipboard's content as a string.
+
+#### `sugar.debug. console_print(str)`
+- Print into the console.
+- Basically `print(...)` from lua, not overrided.

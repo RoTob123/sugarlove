@@ -33,9 +33,9 @@
 
 #### `sugar.time. set_frame_waiting ([fps])`
 - Sets a cap to the number of frames per second.
-- Sugarcoat will wait so that `1/fps` seconds passes between each frame.
+- sugarlove will wait so that `1/fps` seconds passes between each frame.
 - Call `set_frame_waiting()` to remove the fps cap.
-- Sugarcoat doesn't set any fps cap until you call this function. 
+- sugarlove doesn't set any fps cap until you call this function. 
 
 &#8202;
 

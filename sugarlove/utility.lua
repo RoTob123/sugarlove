@@ -1,10 +1,12 @@
 sugar = sugar or {}
 
--- this subpackage is specific to sugarcoat.
+-- this subpackage is specific to sugarlove.
 -- i.e. it is not normally a part of SUGAR.
 
 -- puts package's content into global environment
 -- will not replace already existing global content unless 'do_override' is true.
+local read_line = io.read()
+
 local _overridden = {}
 local function using_package(p, do_override)
   local env = getfenv(2)
@@ -87,7 +89,9 @@ sugar.utility = {
   sort          = table.sort,
   
   merge_tables  = merge_tables,
-  copy_table    = copy_table
+  copy_table    = copy_table,
+
+  read_line = io.read()
 }
 
 sugar.S = sugar.S or {}
