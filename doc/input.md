@@ -175,7 +175,7 @@ register_btn("left", 0, {input_id("keyboard", "left"),
 
 #### `sugar.input. ctrlr_has_default_bindings (controller)`
 - Returns whether this controller has default bindings, allowing you to use the known input ids with it.
-- If this returns false, you won't be able to use that controller with the current version of Sugarcoat, sorry. :(
+- If this returns false, you won't be able to use that controller with the current version of sugarlove, sorry. :(
 - `controller` should be an id from `ctrlr_list()`.
 
 &#8202;
